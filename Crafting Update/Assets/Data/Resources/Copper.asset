@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7f789076b4b4449b5b368a455330db, type: 3}
+  m_Name: Copper
+  m_EditorClassIdentifier: 
+  m_Resource: 2
+  m_TypeOfReource: 0
+  m_ColorCode: {r: 0.735849, g: 0.42124814, b: 0.2672659, a: 1}
+  smoothness: 0.857
+  metallic: 0.883

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e551024898646c49999a78de51b7620, type: 3}
+  m_Name: Green Lands (1)
+  m_EditorClassIdentifier: 
+  primary: {r: 0.5019608, g: 0.79215693, b: 0, a: 1}
+  secondary: {r: 0.412479, g: 0.6509434, b: 0, a: 1}
+  tertiary: {r: 0.3584906, g: 0.26697898, b: 0.15726237, a: 1}
