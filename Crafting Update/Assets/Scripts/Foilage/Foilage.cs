@@ -23,4 +23,6 @@ public class Foilage : MonoBehaviour
        GameObject treeI = (GameObject)Instantiate(tree[i], Vector3.zero, Quaternion.identity);
        return treeI;
     }
+
+
 }

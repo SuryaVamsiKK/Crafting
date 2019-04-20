@@ -33,6 +33,8 @@ public class MeshGenerator : MonoBehaviour
     #region Mesh
 
     Vector3[] verts;
+    float[] uvIndex;
+    bool[] vertsTrees;
     int[] triangles;   
     Mesh mesh;
     Vector2[] uvs;
@@ -71,6 +73,8 @@ public class MeshGenerator : MonoBehaviour
 
         mesh = new Mesh();
         verts = new Vector3[(shapeSettings.previewResolution + 1) * (shapeSettings.previewResolution + 1)];
+        vertsTrees = new bool[(shapeSettings.previewResolution + 1) * (shapeSettings.previewResolution + 1)];
+        uvIndex = new float[(shapeSettings.previewResolution + 1) * (shapeSettings.previewResolution + 1)];
         uvs = new Vector2[(shapeSettings.previewResolution + 1) * (shapeSettings.previewResolution + 1)];
 
         triangles = new int[(shapeSettings.previewResolution) * (shapeSettings.previewResolution) * 6]; 
@@ -138,16 +142,13 @@ public class MeshGenerator : MonoBehaviour
                 }
 
                 #region Vertices
-                float rawIndex = 0;
-                int index = 0;
                 float elevaltion = 0;
                 verts[i] = (localUp + (localVert.x + pos) * scale * axisA - (localVert.y + pos) * scale * axisB);
                 verts[i] = verts[i].normalized;
-                uvs[i] = new Vector2(colorGenerator.biomePercentFromPoint(verts[i], out rawIndex), 0);        // 1. Biome Index to UVs
+                uvs[i] = new Vector2(colorGenerator.biomePercentFromPoint(verts[i], out uvIndex[i]), 0);        // 1. Biome Index to UVs
 
                 verts[i] = noiseFilter.CalculatePointOnPlanet(verts[i], this.transform.position, out elevaltion);   // 2. Vertice height to elevation
 
-                index = Mathf.RoundToInt(rawIndex);
 
                 if (lod == 0)
                 {
@@ -170,10 +171,7 @@ public class MeshGenerator : MonoBehaviour
                 //{
                 if (lod >= planetCore.GetComponent<PlanetGenerator>().lodSettings.maxDepth)
                 {
-                    if (GetComponent<foilageSpwaner>().spwanTrees)
-                    {
-                        GetComponent<foilageSpwaner>().Spwan(verts[i], index);
-                    }
+                    vertsTrees[i] = true;
                     //    //biometype.Add(index);
                     //    //elevationValues.Add(elevaltion);
                     //    //spwanAblepoints.Add(i);
@@ -304,9 +302,19 @@ public class MeshGenerator : MonoBehaviour
         transform.position = verts[(verts.Length / 2)]; // To put the pivot at the exact middle vertice. For further control over LOD.
        
        for (int i = 0; i < verts.Length; i++)
-       {
+        {
+            int index = 0;
+            index = Mathf.RoundToInt(uvIndex[i]);
             verts[i] = verts[i] - this.transform.position;
+            if(vertsTrees[i] == true)
+            {
+                if (GetComponent<foilageSpwaner>().spwanTrees)
+                {
+                    GetComponent<foilageSpwaner>().Spwan(verts[i], index);
+                }
+            }
        }
+
        
        Vector3 pose = planetCore.position + (planetCore.rotation * transform.position);
        transform.position = pose;

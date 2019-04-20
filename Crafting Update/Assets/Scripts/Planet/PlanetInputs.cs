@@ -16,6 +16,8 @@ public class PlanetInputs : MonoBehaviour
     public ColorSettings surfaceColorSettings;
     public ColorSettings seaColorSettings;
 
+    public Transform sky;
+
     void OnValidate()
     {
         surfaceShapeSettings.planetRadius = radius;
@@ -30,6 +32,9 @@ public class PlanetInputs : MonoBehaviour
         sea.GetComponent<PlanetGenerator>().lodSettings = lodSettings;
         sea.GetComponent<PlanetGenerator>().shapeSettings = seaShapeSettings;
         sea.GetComponent<ColorGenerator>().settings = seaColorSettings;
+
+        sky.localScale = new Vector3(1000 + radius, 1000 + radius, 1000 + radius);
+        GetComponent<Attractor>().gravitationalField = 1500 + radius;
 
         GeneratePlanet();
     }

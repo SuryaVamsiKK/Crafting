@@ -71,9 +71,10 @@ public class foilageSpwaner : MonoBehaviour
             {
                 newTree.transform.parent = this.transform;
                 //Debug.Log(treePos);
-                newTree.transform.position = treePos + planetCore.position;
-                newTree.transform.up = -(planetCore.position - transform.position).normalized;
-
+                newTree.transform.localPosition = treePos;
+                //newTree.transform.up = -(planetCore.position - newTree.transform.position).normalized;
+                newTree.GetComponent<FoilageColorizer>().planetCore = planetCore;
+                //Debug.DrawLine(planetCore.position, newTree.transform.localPosition, Color.grey, 10f);
                 #region Palette based Color Generation
 
                 int randomPallete = 0;
@@ -91,5 +92,4 @@ public class foilageSpwaner : MonoBehaviour
             }
         }
     }
-
 }

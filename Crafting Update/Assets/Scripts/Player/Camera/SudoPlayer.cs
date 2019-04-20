@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class SudoPlayer : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class SudoPlayer : MonoBehaviour
     public Transform cameraa;
     public bool toFollowCam = true;
     public float camfollowSpeed = 10f;
+    public CinemachineFreeLook camSettings;
 
     RaycastHit hit;
     public LayerMask mask;
@@ -40,7 +42,7 @@ public class SudoPlayer : MonoBehaviour
         //}
         if (transform.parent.parent != null)
         {
-            transform.up = (transform.position - transform.parent.parent.position).normalized;
+            transform.rotation = Quaternion.LookRotation(transform.forward, (transform.position - transform.parent.parent.position).normalized);
         }
         lookAt();
     }
@@ -59,6 +61,12 @@ public class SudoPlayer : MonoBehaviour
 
     public void lookAt()
     {
+
+        if(camSettings.m_XAxis.m_InputAxisValue == 0 && camSettings.m_XAxis.m_InputAxisValue == 0)
+        {
+            //transform.localRotation = Quaternion.Euler(new Vector3(0, 309.524f, 0));
+        }
+
         Vector3 playerLocal = target.InverseTransformPoint(cameraa.position);
         playerLocal = new Vector3(playerLocal.x, 0, playerLocal.z);
         Vector3 updatedForward = ((target.forward + target.position) - target.TransformPoint(playerLocal)).normalized;
