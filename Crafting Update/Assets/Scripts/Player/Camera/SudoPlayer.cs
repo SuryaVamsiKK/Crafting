@@ -78,5 +78,11 @@ public class SudoPlayer : MonoBehaviour
             target.localRotation = Quaternion.Lerp(target.localRotation, targetRot, Time.deltaTime * camfollowSpeed);
             //target.forward = Vector3.Lerp(target.forward, updatedForward, Time.deltaTime * camfollowSpeed);
         }
-    }    
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawSphere(transform.position, 0.5f);
+    }
 }

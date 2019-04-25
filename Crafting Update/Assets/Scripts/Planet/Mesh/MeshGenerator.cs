@@ -34,6 +34,7 @@ public class MeshGenerator : MonoBehaviour
 
     Vector3[] verts;
     float[] uvIndex;
+    float[] elevationPoint;
     bool[] vertsTrees;
     int[] triangles;   
     Mesh mesh;
@@ -75,6 +76,7 @@ public class MeshGenerator : MonoBehaviour
         verts = new Vector3[(shapeSettings.previewResolution + 1) * (shapeSettings.previewResolution + 1)];
         vertsTrees = new bool[(shapeSettings.previewResolution + 1) * (shapeSettings.previewResolution + 1)];
         uvIndex = new float[(shapeSettings.previewResolution + 1) * (shapeSettings.previewResolution + 1)];
+        elevationPoint = new float[(shapeSettings.previewResolution + 1) * (shapeSettings.previewResolution + 1)];
         uvs = new Vector2[(shapeSettings.previewResolution + 1) * (shapeSettings.previewResolution + 1)];
 
         triangles = new int[(shapeSettings.previewResolution) * (shapeSettings.previewResolution) * 6]; 
@@ -97,7 +99,10 @@ public class MeshGenerator : MonoBehaviour
 
         if (lod >= planetCore.GetComponent<PlanetGenerator>().lodSettings.maxDepth)
         {
-            GetComponent<foilageSpwaner>().spwanTrees = true;
+            if (GetComponent<foilageSpwaner>() != null)
+            {
+                GetComponent<foilageSpwaner>().spwanTrees = true;
+            }
         }
 
         #endregion
@@ -172,6 +177,7 @@ public class MeshGenerator : MonoBehaviour
                 if (lod >= planetCore.GetComponent<PlanetGenerator>().lodSettings.maxDepth)
                 {
                     vertsTrees[i] = true;
+                    elevationPoint[i] = elevaltion / planetCore.GetComponent<PlanetGenerator>().shapeSettings.planetRadius;
                     //    //biometype.Add(index);
                     //    //elevationValues.Add(elevaltion);
                     //    //spwanAblepoints.Add(i);
@@ -204,7 +210,7 @@ public class MeshGenerator : MonoBehaviour
                         //        biometype.Add(0);
                         //    }
                         #endregion
-                    //}
+                        //}
                     //}   
                 //}
 
@@ -306,11 +312,11 @@ public class MeshGenerator : MonoBehaviour
             int index = 0;
             index = Mathf.RoundToInt(uvIndex[i]);
             verts[i] = verts[i] - this.transform.position;
-            if(vertsTrees[i] == true)
+            if(vertsTrees[i] == true && GetComponent<foilageSpwaner>() != null)
             {
                 if (GetComponent<foilageSpwaner>().spwanTrees)
                 {
-                    GetComponent<foilageSpwaner>().Spwan(verts[i], index);
+                    GetComponent<foilageSpwaner>().Spwan(verts[i], index, elevationPoint[i]);
                 }
             }
        }

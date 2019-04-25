@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34ca10006c58a7f458f973de3eb3c667, type: 3}
+  m_Name: Cactus 1
+  m_EditorClassIdentifier: 
+  tree: {fileID: 6846108616709874867, guid: 9a37355ef23e4364daba82b3460c5103, type: 3}
+  colorPalettes:
+  - {fileID: 11400000, guid: f74a51fc170c9ea49a01f8bacf218ba7, type: 2}
+  spwanablility: 990
+  height:
+    minHeight: 1.3
+    maxHeight: 1.4

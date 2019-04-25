@@ -34,6 +34,10 @@ public class Attractor : MonoBehaviour
         Vector3 force = direction.normalized * forceMagnitude;
 
         objToAttract.AddForce(force, ForceMode.Acceleration);
+
+
+        //Quaternion targetRotation = Quaternion.FromToRotation(-objToAttract.transform.up, direction) * objToAttract.transform.rotation;
+        //objToAttract.transform.rotation = Quaternion.Slerp(objToAttract.transform.rotation, targetRotation, 50f * Time.deltaTime);
     }
 
     private void OnDrawGizmos()

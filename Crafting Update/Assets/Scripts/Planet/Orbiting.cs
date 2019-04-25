@@ -5,6 +5,7 @@ using UnityEngine;
 public class Orbiting : MonoBehaviour
 {
     public float rotateSpeed;
+    public bool rotate = false;
 
     void Start()
     {
@@ -13,6 +14,9 @@ public class Orbiting : MonoBehaviour
     
     void Update()
     {
-        transform.localEulerAngles += new Vector3(0, Time.deltaTime * rotateSpeed, 0);
+        if (rotate)
+        {
+            transform.localEulerAngles += new Vector3(0, Time.deltaTime * rotateSpeed, 0);
+        }
     }
 }

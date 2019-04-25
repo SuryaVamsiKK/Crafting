@@ -59,34 +59,58 @@ public class foilageSpwaner : MonoBehaviour
         }
     }*/
 
-    public void Spwan(Vector3 treePos, int biomeType)
+    public void Spwan(Vector3 treePos, int biomeType, float elevationPoint)
     {
-        planetCore = GetComponent<MeshGenerator>().planetCore;
-        int choosenAsset = GetComponent<MeshGenerator>().planetCore.GetComponent<Randomizer>().GenerateSingleNumber(0, reference.tree.Length);
-        float fordebug = GetComponent<MeshGenerator>().planetCore.GetComponent<Randomizer>().GenerateSingleNumber(1f, 1000f);
-        if (fordebug > reference.spwanablility[choosenAsset]) // to spwan or not
+        int biomeIn = 0;
+        string biomeName = "";
+
+        for (int i = 0; i < Foilage.instance.biomeFoilage.Length; i++)
         {
-            GameObject newTree = reference.getTree(choosenAsset);
+            if (Foilage.instance.biomeFoilage[i].biomeName == GetComponent<MeshGenerator>().planetCore.GetComponent<ColorGenerator>().settings.biomeColorSettings.biomes[biomeType].BiomeName)
+            {
+                biomeIn = i;
+                biomeName = GetComponent<MeshGenerator>().planetCore.GetComponent<ColorGenerator>().settings.biomeColorSettings.biomes[biomeType].BiomeName;
+            }
+        }
+
+        planetCore = GetComponent<MeshGenerator>().planetCore;
+        int choosenAsset = GetComponent<MeshGenerator>().planetCore.GetComponent<Randomizer>().GenerateSingleNumber(0, reference.biomeFoilage[biomeIn].tree.Length);
+        float fordebug = GetComponent<MeshGenerator>().planetCore.GetComponent<Randomizer>().GenerateSingleNumber(1f, 1000f);
+        
+        if (fordebug > reference.biomeFoilage[biomeIn].tree[choosenAsset].spwanablility && elevationPoint > reference.biomeFoilage[biomeIn].tree[choosenAsset].height.minHeight && elevationPoint < reference.biomeFoilage[biomeIn].tree[choosenAsset].height.maxHeight) // to spwan or not
+        {
+            GameObject newTree = reference.getTree(choosenAsset, biomeName);
             if (newTree != null)
             {
+                int randomPalette = 0;
+                if (Foilage.instance.biomeFoilage[biomeIn].tree[choosenAsset].colorPalettes.Length > 1)
+                {
+                    randomPalette = Random.Range(0, Foilage.instance.biomeFoilage[biomeIn].tree[choosenAsset].colorPalettes.Length);
+                }
+
                 newTree.transform.parent = this.transform;
                 //Debug.Log(treePos);
                 newTree.transform.localPosition = treePos;
                 //newTree.transform.up = -(planetCore.position - newTree.transform.position).normalized;
                 newTree.GetComponent<FoilageColorizer>().planetCore = planetCore;
-                //Debug.DrawLine(planetCore.position, newTree.transform.localPosition, Color.grey, 10f);
+
                 #region Palette based Color Generation
-
-                int randomPallete = 0;
-                if (GetComponent<MeshGenerator>().colorGenerator.settings.biomeColorSettings.biomes[biomeType].colorPalettes.Count > 1)
+                               
+                if(newTree.transform.GetChild(0).GetComponent<MeshRenderer>().materials.Length == 1)
                 {
-                    randomPallete = Random.Range(0, GetComponent<MeshGenerator>().colorGenerator.settings.biomeColorSettings.biomes[biomeType].colorPalettes.Count);
+                    newTree.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].SetColor("_Color", reference.biomeFoilage[biomeIn].tree[choosenAsset].colorPalettes[randomPalette].primary);
                 }
-
-                newTree.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].SetColor("_Color", GetComponent<MeshGenerator>().colorGenerator.settings.biomeColorSettings.biomes[biomeType].colorPalettes[randomPallete].primary);
-                newTree.transform.GetChild(0).GetComponent<MeshRenderer>().materials[1].SetColor("_Color", GetComponent<MeshGenerator>().colorGenerator.settings.biomeColorSettings.biomes[biomeType].colorPalettes[randomPallete].secondary);
-                newTree.transform.GetChild(0).GetComponent<MeshRenderer>().materials[2].SetColor("_Color", GetComponent<MeshGenerator>().colorGenerator.settings.biomeColorSettings.biomes[biomeType].colorPalettes[randomPallete].tertiary);
-
+                if (newTree.transform.GetChild(0).GetComponent<MeshRenderer>().materials.Length == 2)
+                {
+                    newTree.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].SetColor("_Color", reference.biomeFoilage[biomeIn].tree[choosenAsset].colorPalettes[randomPalette].primary);
+                    newTree.transform.GetChild(0).GetComponent<MeshRenderer>().materials[1].SetColor("_Color", reference.biomeFoilage[biomeIn].tree[choosenAsset].colorPalettes[randomPalette].tertiary);
+                }
+                if (newTree.transform.GetChild(0).GetComponent<MeshRenderer>().materials.Length == 3)
+                {
+                    newTree.transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].SetColor("_Color", reference.biomeFoilage[biomeIn].tree[choosenAsset].colorPalettes[randomPalette].primary);
+                    newTree.transform.GetChild(0).GetComponent<MeshRenderer>().materials[1].SetColor("_Color", reference.biomeFoilage[biomeIn].tree[choosenAsset].colorPalettes[randomPalette].secondary);
+                    newTree.transform.GetChild(0).GetComponent<MeshRenderer>().materials[2].SetColor("_Color", reference.biomeFoilage[biomeIn].tree[choosenAsset].colorPalettes[randomPalette].tertiary);
+                }
                 #endregion
 
             }

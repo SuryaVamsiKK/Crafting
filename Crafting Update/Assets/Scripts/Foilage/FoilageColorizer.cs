@@ -49,8 +49,14 @@ public class FoilageColorizer : MonoBehaviour
                 clip -= Time.deltaTime * appearSpeed;
 
                 transform.GetChild(0).GetComponent<MeshRenderer>().materials[0].SetFloat("_Clip", clip);
-                transform.GetChild(0).GetComponent<MeshRenderer>().materials[1].SetFloat("_Clip", clip);
-                transform.GetChild(0).GetComponent<MeshRenderer>().materials[2].SetFloat("_Clip", clip);
+                if (transform.GetChild(0).GetComponent<MeshRenderer>().materials.Length > 1)
+                {
+                    transform.GetChild(0).GetComponent<MeshRenderer>().materials[1].SetFloat("_Clip", clip);
+                    if (transform.GetChild(0).GetComponent<MeshRenderer>().materials.Length > 2)
+                    {
+                        transform.GetChild(0).GetComponent<MeshRenderer>().materials[2].SetFloat("_Clip", clip);
+                    }
+                }
             }
         }
     }

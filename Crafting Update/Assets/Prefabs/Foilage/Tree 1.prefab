@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4589421774655732620}
   - component: {fileID: 3612093966154814734}
   m_Layer: 10
-  m_Name: Tree
+  m_Name: Tree 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,6 +50,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 823
+  planetCore: {fileID: 0}
   appearSpeed: 1
 --- !u!1001 &987942222191023640
 PrefabInstance:

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34ca10006c58a7f458f973de3eb3c667, type: 3}
+  m_Name: Tree 2
+  m_EditorClassIdentifier: 
+  tree: {fileID: 2769286240735086184, guid: 0fca70f71c24c624599191acaf5c743f, type: 3}
+  colorPalettes:
+  - {fileID: 11400000, guid: 5993b1b180790a84982c11e39c35676e, type: 2}
+  - {fileID: 11400000, guid: 97cb50e87cf53ec45b53cfa0ee6a133d, type: 2}
+  spwanablility: 990
+  height:
+    minHeight: 1.3
+    maxHeight: 1.4

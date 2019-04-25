@@ -46,6 +46,7 @@ public class QuadTreePlanetry : MonoBehaviour
                 if (!divided)
                 {
                     quadTree();
+                    //StartCoroutine(div());
                     //ThreadPool.QueueUserWorkItem(new WaitCallback(RunOnThreadPool));
                     divided = true;
                 }
@@ -57,7 +58,7 @@ public class QuadTreePlanetry : MonoBehaviour
             {
                 //if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.parent.position) > transform.parent.GetComponent<QuadTreePlanetry>().threshold)
                 //{
-                //GetComponent<foilageSpwaner>().Reseter();
+                //    GetComponent<foilageSpwaner>().Reseter();
                 //}
                 goto lb; 
             }
@@ -103,33 +104,16 @@ public class QuadTreePlanetry : MonoBehaviour
             }
             divide = false;
         }
-        //this only for live editing or else entire ELSE can be removed
-        else
-        {
-            if(transform.childCount > 0)
-            {
-                for (int i = 0; i < 4; i++)
-                {             
-                    GameObject g = this.transform.GetChild(i).gameObject;
-                    g.GetComponent<MeshGenerator>().lod = GetComponent<MeshGenerator>().lod + 1;
-                    g.name = "LOD : " + g.GetComponent<MeshGenerator>().lod;
-                    g.GetComponent<MeshRenderer> ().sharedMaterial = GetComponent<MeshGenerator>().mat;
-
-                    MeshGenerator g_MeshGenerator =  g.GetComponent<MeshGenerator>();
-                    g_MeshGenerator.quad_Location = i;
-                    g_MeshGenerator.chunk = GetComponent<MeshGenerator>().chunk;
-                    g_MeshGenerator.localUp = GetComponent<MeshGenerator>().localUp;
-                    g_MeshGenerator.shapeSettings = GetComponent<MeshGenerator>().shapeSettings;
-                    g_MeshGenerator.colorGenerator = GetComponent<MeshGenerator>().colorGenerator;
-                    g_MeshGenerator.CreateShape();
-                    g_MeshGenerator.UpdateMesh();
-                }
-            }
-        }
     }
 
     private void RunOnThreadPool(object state)
     {
+        quadTree();
+    }
+
+    public IEnumerator div()
+    {
+        yield return new WaitForSeconds(0);
         quadTree();
     }
 }

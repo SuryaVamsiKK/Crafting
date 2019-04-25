@@ -4,25 +4,43 @@ using UnityEngine;
 
 public class Foilage : MonoBehaviour
 {
-    public GameObject[] tree;
-    public float[] spwanablility;
-    public float[] height;
-    
+    public biomeDetails[] biomeFoilage;
+
     public static Foilage instance { get; private set; }
 
     public void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
     }
 
-    public GameObject getTree(int i)
+    public GameObject getTree(int i, string biomeName)
     {
-       GameObject treeI = (GameObject)Instantiate(tree[i], Vector3.zero, Quaternion.identity);
-       return treeI;
+        GameObject treeI = null;
+
+
+        for (int a = 0; a < biomeFoilage.Length; a++)
+        {
+            if(biomeFoilage[a].biomeName == biomeName)
+            {
+                treeI = (GameObject)Instantiate(biomeFoilage[a].tree[i].tree, Vector3.zero, Quaternion.identity);
+                break;
+            }
+            else
+            {
+                continue;
+            }
+        }
+
+        return treeI;
     }
-
-
+    
+    [System.Serializable]
+    public class biomeDetails
+    {
+        public string biomeName;
+        public foilageObjects[] tree;
+    }    
 }
