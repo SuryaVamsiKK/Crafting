@@ -20,6 +20,6 @@ MonoBehaviour:
   roughness: 7
   persistance: 0.35
   weightMultiplyer: 4
-  center: {x: 0, y: 0, z: 0}
+  center: {x: 8.06428, y: 2.961752, z: -16.36044}
   seaClamp: 0
   minValue: 0

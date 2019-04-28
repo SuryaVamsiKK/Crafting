@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ceeffb67b922154ebc94e73cc270898, type: 3}
+  m_Name: Toxic
+  m_EditorClassIdentifier: 
+  foldout: 0
+  BiomeName: Dude
+  gradient:
+    serializedVersion: 2
+    key0: {r: 0.316383, g: 0.54901963, b: 0.043137264, a: 1}
+    key1: {r: 0.45274755, g: 0.8113208, b: 0.11098258, a: 1}
+    key2: {r: 0.3804712, g: 0.76503736, b: 0.13965508, a: 0}
+    key3: {r: 0.043137264, g: 0.54901963, b: 0.2734776, a: 0}
+    key4: {r: 0.06977177, g: 0.60045826, b: 0.24497636, a: 0}
+    key5: {r: 0.23757258, g: 0.9245283, b: 0.06541473, a: 0}
+    key6: {r: 0.8376117, g: 0.9150943, b: 0.13381095, a: 0}
+    key7: {r: 0.27383465, g: 0.89756465, b: 0.076216854, a: 0}
+    ctime0: 386
+    ctime1: 10216
+    ctime2: 17540
+    ctime3: 25443
+    ctime4: 36815
+    ctime5: 43176
+    ctime6: 53392
+    ctime7: 65535
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 8
+    m_NumAlphaKeys: 2
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  startHeight: 0
+  tintPercent: 0
+  colorPalettes:
+  - {fileID: 11400000, guid: 68e97647f7bac1246afccca4e65547e0, type: 2}

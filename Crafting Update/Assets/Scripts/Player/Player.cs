@@ -60,4 +60,19 @@ public class Player : MonoBehaviour
             Cursor.visible = true;
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.tag == "Ships")
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                transform.parent.parent.GetChild(0).GetChild(0).parent = other.transform;
+                other.GetComponent<Landing>().enabled = true;
+                other.GetComponent<Movement>().enabled = true;
+                other.GetComponent<Landing>().cmLook.SetActive(true);
+                transform.parent.parent.gameObject.SetActive(false);
+            }
+        }
+    }
 }

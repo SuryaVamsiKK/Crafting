@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ceeffb67b922154ebc94e73cc270898, type: 3}
+  m_Name: Bhro
+  m_EditorClassIdentifier: 
+  foldout: 0
+  BiomeName: hey
+  gradient:
+    serializedVersion: 2
+    key0: {r: 0.7562339, g: 0.7924528, b: 0.063545756, a: 1}
+    key1: {r: 0.9211259, g: 0.9528302, b: 0.30113026, a: 1}
+    key2: {r: 0.83682865, g: 0.8679245, b: 0.1760413, a: 1}
+    key3: {r: 0.6905828, g: 0.87058824, b: 0.19999999, a: 0}
+    key4: {r: 0.7014649, g: 0.8751396, b: 0.22813566, a: 0}
+    key5: {r: 0.9056604, g: 0.6282644, b: 0.11534355, a: 0}
+    key6: {r: 0.8366197, g: 0.8679245, b: 0.2251691, a: 0}
+    key7: {r: 0.91314715, g: 0.9528302, b: 0.13932894, a: 0}
+    ctime0: 0
+    ctime1: 8674
+    ctime2: 15613
+    ctime3: 25829
+    ctime4: 35466
+    ctime5: 41634
+    ctime6: 49537
+    ctime7: 64379
+    atime0: 0
+    atime1: 54356
+    atime2: 65535
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 8
+    m_NumAlphaKeys: 3
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  startHeight: 0
+  tintPercent: 0
+  colorPalettes:
+  - {fileID: 11400000, guid: d2c1379d9def3fe49a82c7bdf464d951, type: 2}
+  - {fileID: 11400000, guid: fa43b3015cd8b4642b1c330ff313cebd, type: 2}
+  - {fileID: 11400000, guid: 5045eca778f52e7419fa8347dd0cf034, type: 2}
+  - {fileID: 11400000, guid: da88c860fec25494580bd85ad24d2e40, type: 2}
+  - {fileID: 11400000, guid: f6850f808855b974c83437be4f852728, type: 2}

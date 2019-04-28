@@ -11,9 +11,13 @@ public class Landing : MonoBehaviour
     public LayerMask m_Mask;
     public Vector3 target;
     public Vector3 targetUp;
-    Vector3 targ;
 
     public bool landed = false;
+    public bool exited = false;
+    public Transform spwan;
+    public GameObject cmLook;
+    public GameObject playerDot;
+    
     void Start()
     {
         target = Vector3.zero;
@@ -21,21 +25,9 @@ public class Landing : MonoBehaviour
 
     void Update()
     {
-        if (planet.Length > 1)
-        {
-            if (Vector3.Distance(planet[0].position, transform.position) < Vector3.Distance(planet[1].position, transform.position))
-            {
-                targ = planet[0].position;
-            }
-            else
-            {
-                targ = planet[1].position;
-            }
-        }
+        ray = new Ray(transform.GetChild(0).position, -transform.up);
 
-        ray = new Ray(transform.position, (transform.position - targ));
-
-        if (Physics.Raycast(ray.origin, -ray.direction, out hit, m_LandingRange, m_Mask))
+        if (Physics.Raycast(ray.origin, ray.direction, out hit, m_LandingRange, m_Mask))
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -50,7 +42,16 @@ public class Landing : MonoBehaviour
             GetComponent<Rigidbody>().isKinematic = true;
             transform.up = Vector3.Lerp(transform.up, targetUp, Time.deltaTime * 1f);
             transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * 0.5f);
+
+            if(Input.GetKeyDown(KeyCode.F))
+            {
+                cmLook.SetActive(false);
+                exited = true;
+                GetComponent<Landing>().enabled = false;
+                GetComponent<Movement>().enabled = false;
+            }
         }
+
         else
         {
             GetComponent<Rigidbody>().isKinematic = false;

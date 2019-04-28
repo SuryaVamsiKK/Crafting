@@ -7,8 +7,9 @@ public class Attractor : MonoBehaviour
     const float G = 667.4f;
 
     public Rigidbody rb;
-
     public float gravitationalField = 500;
+    public GameObject player;
+    public int planetIndex;
 
     void FixedUpdate()
     {
@@ -19,8 +20,23 @@ public class Attractor : MonoBehaviour
             {
                 if ((rb.position - this.rb.position).sqrMagnitude < gravitationalField * gravitationalField)
                 {
+                    transform.parent.parent.GetComponent<Orbiting>().enabled = false;
+                    transform.parent.GetComponent<Orbiting>().enabled = false;
+                    if(rb.GetComponent<Movement>() != null)
+                    {
+                        rb.GetComponent<Movement>().inField[planetIndex] = true;
+                    }
                     Attract(rb);
-                }                
+                }
+                else
+                {
+                    if (rb.GetComponent<Movement>() != null)
+                    {
+                        rb.GetComponent<Movement>().inField[planetIndex] = false;
+                    }
+                    transform.parent.parent.GetComponent<Orbiting>().enabled = true;
+                    transform.parent.GetComponent<Orbiting>().enabled = true;
+                }
             }
         } 
     }
@@ -35,6 +51,18 @@ public class Attractor : MonoBehaviour
 
         objToAttract.AddForce(force, ForceMode.Acceleration);
 
+        if (objToAttract.GetComponent<Landing>() != null)
+        {
+            if (objToAttract.GetComponent<Landing>().exited)
+            {
+                player.transform.position = objToAttract.GetComponent<Landing>().spwan.position;
+                player.transform.rotation = objToAttract.GetComponent<Landing>().spwan.rotation;
+                player.SetActive(true);
+                objToAttract.GetComponent<Landing>().playerDot.transform.parent = player.transform.GetChild(0);
+                objToAttract.GetComponent<Landing>().playerDot.transform.localPosition = new Vector3(0, 0, 0);
+                objToAttract.GetComponent<Landing>().exited = false;
+            }
+        }
 
         //Quaternion targetRotation = Quaternion.FromToRotation(-objToAttract.transform.up, direction) * objToAttract.transform.rotation;
         //objToAttract.transform.rotation = Quaternion.Slerp(objToAttract.transform.rotation, targetRotation, 50f * Time.deltaTime);

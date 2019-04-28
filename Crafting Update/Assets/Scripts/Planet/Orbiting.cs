@@ -6,12 +6,7 @@ public class Orbiting : MonoBehaviour
 {
     public float rotateSpeed;
     public bool rotate = false;
-
-    void Start()
-    {
         
-    }
-    
     void Update()
     {
         if (rotate)

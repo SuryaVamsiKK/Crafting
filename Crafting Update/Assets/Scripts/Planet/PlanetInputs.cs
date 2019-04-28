@@ -39,7 +39,7 @@ public class PlanetInputs : MonoBehaviour
         GeneratePlanet();
     }
 
-    void GeneratePlanet()
+    public void GeneratePlanet()
     {
         transform.GetChild(0).GetComponent<PlanetGenerator>().CreatePlanet();
         transform.GetChild(1).GetComponent<PlanetGenerator>().CreatePlanet();

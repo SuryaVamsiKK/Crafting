@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game Space.unity
     guid: b4b947f8a8fc1a34391904d438fea185
+  - enabled: 0
+    path: Assets/Scenes/Resource PlayGround.unity
+    guid: 31cad721a42fb724ab22840be5a9be87
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d8002172cf1473045b3d7491f0eea461,
       type: 2}

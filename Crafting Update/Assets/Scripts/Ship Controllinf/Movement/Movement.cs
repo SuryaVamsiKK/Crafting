@@ -30,7 +30,7 @@ public class Movement : MonoBehaviour
     [ConditionalHide("enableValues")] public float retroThrustYaw = 1;
     [ConditionalHide("enableValues")] public float retroThrustPitch = 1;
     [ConditionalHide("enableValues")] public float retroThrustRoll = 1;
-    [ConditionalHide("enableValues")] public float updateValue = 0.2f;
+    public float updateValue = 0.2f;
 
     [Space]
     public Transform thrustObject;
@@ -39,6 +39,12 @@ public class Movement : MonoBehaviour
     [Header("Color Settings")]
     public Color flameColorForward;
     public Color flameColorBackward;
+
+    public bool[] inField;
+    public int speeds = 7;
+
+    public SolarSystemRandomizer solarsystem;
+    public GameObject ui;
 
     private void OnValidate()
     {
@@ -107,13 +113,39 @@ public class Movement : MonoBehaviour
             }
         }
 
+        if(!fieldChecker())
+        {
+            ui.SetActive(true);
+            if(Input.GetKeyDown(KeyCode.Q))
+            {
+                solarsystem.UpdateSeed();
+            }
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                maxThrust = 1000;
+                speeds = 100;
+            }
+            
+            if(Input.GetKeyDown(KeyCode.U))
+            {
+                maxThrust = 100;
+                speeds = 5;
+            }
+        }
+        else
+        {
+            ui.SetActive(false);
+            maxThrust = 100;
+            speeds = 7;
+        }
+
     }
 
     public void thrusterBasedMovement(float inputThrust)
     {
         #region clamping rawThrust with max thrust
 
-        thrust += inputThrust;
+        thrust += inputThrust * speeds;
 
         if (thrust > maxThrust)
         {
@@ -415,6 +447,19 @@ public class Movement : MonoBehaviour
         }
 
         return value;
+    }
+
+    public bool fieldChecker()
+    {
+        for (int i = 0; i < inField.Length; i++)
+        {
+            if(inField[i])
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
 

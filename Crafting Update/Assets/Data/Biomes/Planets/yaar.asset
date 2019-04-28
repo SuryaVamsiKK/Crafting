@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ceeffb67b922154ebc94e73cc270898, type: 3}
+  m_Name: yaar
+  m_EditorClassIdentifier: 
+  foldout: 0
+  BiomeName: yaaro
+  gradient:
+    serializedVersion: 2
+    key0: {r: 0.48270157, g: 0.20784312, b: 0.5568628, a: 1}
+    key1: {r: 0.0745098, g: 0.8418537, b: 0.9254902, a: 1}
+    key2: {r: 0.46810693, g: 0.104396604, b: 0.9622642, a: 0}
+    key3: {r: 0.53224003, g: 0.20784312, b: 0.77254903, a: 0}
+    key4: {r: 0.35590956, g: 0.7521766, b: 0.8113208, a: 0}
+    key5: {r: 0.14413491, g: 0.67924106, b: 0.745283, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 14456
+    ctime2: 27563
+    ctime3: 36237
+    ctime4: 44333
+    ctime5: 65535
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 6
+    m_NumAlphaKeys: 2
+  tint: {r: 0, g: 0, b: 0, a: 0}
+  startHeight: 0
+  tintPercent: 0
+  colorPalettes:
+  - {fileID: 11400000, guid: 4566cdfeb8ec22d4099285a2e51b2a58, type: 2}
+  - {fileID: 11400000, guid: a4dc83e6575e4df45a2f4daa32f4c8b7, type: 2}
+  - {fileID: 11400000, guid: 743d8760e3ae6ab4095c01d1e9e3bfc8, type: 2}
+  - {fileID: 11400000, guid: 7e557b48e512308478077ea8311c0d12, type: 2}
+  - {fileID: 11400000, guid: a770775340dc7d841afc50f1a5c3fcfb, type: 2}
